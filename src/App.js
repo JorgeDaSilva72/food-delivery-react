@@ -10,10 +10,13 @@ import {
   Settings,
   SummarizeRounded,
 } from "@mui/icons-material";
+import BannerName from "./Components/BannerName";
+import banner from "./img/banner.png";
 
 function App() {
   useEffect(() => {
     const menuLi = document.querySelectorAll("#menu li");
+    console.log(menuLi);
 
     function setMenuActive() {
       menuLi.forEach((n) => n.classList.remove("active"));
@@ -30,12 +33,17 @@ function App() {
       {/* main container */}
       <main>
         <div className="mainContainer"></div>
+        {/* Banner  */}
+        <div className="banner">
+          <BannerName name={"Claudia"} discount={"20"} more={"#"} />
+          <img src={banner} alt="banner" className="deliveryPic" />
+        </div>
         <div className="rightMenu"></div>
       </main>
       {/* bottom menu */}
       <div className="bottomMenu">
         <ul id="menu">
-          <MenuContainer link={"#"} icon={<HomeRounded />} />
+          <MenuContainer link={"#"} icon={<HomeRounded />} isHome />
           <MenuContainer link={"#"} icon={<Chat />} />
           <MenuContainer link={"#"} icon={<AccountBalanceWalletRounded />} />
           <MenuContainer link={"#"} icon={<Favorite />} />
