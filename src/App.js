@@ -12,7 +12,7 @@ import {
 } from "@mui/icons-material";
 import BannerName from "./Components/BannerName";
 import banner from "./img/banner.png";
-
+import SubMenuContainer from "./Components/SubMenuContainer";
 function App() {
   useEffect(() => {
     const menuLi = document.querySelectorAll("#menu li");
@@ -30,16 +30,7 @@ function App() {
     <div className="App">
       {/* header section */}
       <Header />
-      {/* main container */}
-      <main>
-        <div className="mainContainer"></div>
-        {/* Banner  */}
-        <div className="banner">
-          <BannerName name={"Claudia"} discount={"20"} more={"#"} />
-          <img src={banner} alt="banner" className="deliveryPic" />
-        </div>
-        <div className="rightMenu"></div>
-      </main>
+
       {/* bottom menu */}
       <div className="bottomMenu">
         <ul id="menu">
@@ -52,6 +43,22 @@ function App() {
           <div className="indicator"></div>
         </ul>
       </div>
+
+      {/* main container */}
+      <main>
+        <div className="mainContainer"></div>
+        {/* Banner  */}
+        <div className="banner">
+          <BannerName name={"Claudia"} discount={"20"} more={"#"} />
+          <img src={banner} alt="banner" className="deliveryPic" />
+        </div>
+        {/* dishContainer  */}
+        <div className="dishContainer">
+          <div className="menuCard">
+            <SubMenuContainer name={"Menu Category"} />
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
