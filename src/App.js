@@ -13,6 +13,9 @@ import {
 import BannerName from "./Components/BannerName";
 import banner from "./img/banner.png";
 import SubMenuContainer from "./Components/SubMenuContainer";
+import MenuCard from "./Components/MenuCard";
+import { MenuItems, Items } from "./Components/Data";
+
 function App() {
   useEffect(() => {
     const menuLi = document.querySelectorAll("#menu li");
@@ -24,6 +27,17 @@ function App() {
     }
 
     menuLi.forEach((n) => n.addEventListener("click", setMenuActive));
+    // menu Card active class changer
+    const menuCard = document
+      .querySelector(".rowContainer")
+      .querySelectorAll(".rowMenuCard");
+
+    function setMenuCardActive() {
+      menuCard.forEach((n) => n.classList.remove("active"));
+      this.classList.add("active");
+    }
+
+    menuCard.forEach((n) => n.addEventListener("click", setMenuCardActive));
   }, []);
 
   return (
@@ -56,6 +70,18 @@ function App() {
         <div className="dishContainer">
           <div className="menuCard">
             <SubMenuContainer name={"Menu Category"} />
+          </div>
+          <div className="rowContainer">
+            {MenuItems &&
+              MenuItems.map((data) => (
+                <div key={data.id}>
+                  <MenuCard
+                    imgSrc={data.imgSrc}
+                    name={data.name}
+                    isActive={data.id === 1 ? true : false}
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </main>
