@@ -18,6 +18,7 @@ import { MenuItems, Items } from "./Components/Data";
 import ItemCard from "./Components/ItemCard";
 
 function App() {
+  // contient le tableau des plats en fontion de la categorie
   const [isMainData, setMainData] = useState(
     Items.filter((element) => element.itemId === "buger01")
   );
@@ -44,6 +45,11 @@ function App() {
 
     menuCard.forEach((n) => n.addEventListener("click", setMenuCardActive));
   }, []);
+
+  // set main dish items on filter
+  const setData = (itemId) => {
+    setMainData(Items.filter((element) => element.itemId === itemId));
+  };
 
   return (
     <div className="App">
@@ -79,7 +85,7 @@ function App() {
           <div className="rowContainer">
             {MenuItems &&
               MenuItems.map((data) => (
-                <div key={data.id}>
+                <div key={data.id} onClick={() => setData(data.itemId)}>
                   <MenuCard
                     imgSrc={data.imgSrc}
                     name={data.name}
