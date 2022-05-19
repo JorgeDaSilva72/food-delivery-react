@@ -1,4 +1,5 @@
 import "./App.css";
+
 import { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import MenuContainer from "./Components/MenuContainer";
@@ -11,25 +12,24 @@ import {
   SummarizeRounded,
 } from "@mui/icons-material";
 import BannerName from "./Components/BannerName";
-import banner from "./img/banner.png";
-import SubMenuContainer from "./Components/SubMenuContainer";
 import MenuCard from "./Components/MenuCard";
 import { MenuItems, Items } from "./Components/Data";
 import ItemCard from "./Components/ItemCard";
 import DebitCard from "./Components/DebitCard";
+import SubMenuContainer from "./Components/SubMenuContainer";
 import CartItem from "./Components/CartItem";
 import { useStateValue } from "./Components/StateProvider";
+
 function App() {
-  // contient le tableau des plats en fontion de la categorie
   const [isMainData, setMainData] = useState(
-    Items.filter((element) => element.itemId === "buger01")
+    Items.filter((element) => element.itemId == "buger01")
   );
 
   const [{ cart, total }, dispatch] = useStateValue();
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const menuLi = document.querySelectorAll("#menu li");
-    console.log(menuLi);
 
     function setMenuActive() {
       menuLi.forEach((n) => n.classList.remove("active"));
@@ -37,6 +37,7 @@ function App() {
     }
 
     menuLi.forEach((n) => n.addEventListener("click", setMenuActive));
+
     // menu Card active class changer
     const menuCard = document
       .querySelector(".rowContainer")
@@ -48,68 +49,78 @@ function App() {
     }
 
     menuCard.forEach((n) => n.addEventListener("click", setMenuCardActive));
-  }, [isMainData, cart]);
+  }, [isMainData, cart, total, totalPrice]);
 
-  // set main dish items on filter
   const setData = (itemId) => {
-    setMainData(Items.filter((element) => element.itemId === itemId));
+    setMainData(Items.filter((element) => element.itemId == itemId));
   };
 
   return (
     <div className="App">
-      {/* header section */}
+      {/* Header section */}
       <Header />
 
-      {/* bottom menu */}
+      {/* Left menu */}
       <div className="bottomMenu">
         <ul id="menu">
-          <MenuContainer link={"#"} icon={<HomeRounded />} isHome />
-          <MenuContainer link={"#"} icon={<Chat />} />
-          <MenuContainer link={"#"} icon={<AccountBalanceWalletRounded />} />
-          <MenuContainer link={"#"} icon={<Favorite />} />
-          <MenuContainer link={"#"} icon={<SummarizeRounded />} />
-          <MenuContainer link={"#"} icon={<Settings />} />
+          {/* prettier-ignore */}
+          <MenuContainer link = {'#'} icon = {<HomeRounded />}  isHome/>
+          {/* prettier-ignore */}
+          <MenuContainer link = {'#'} icon = {<Chat />}  />
+          {/* prettier-ignore */}
+          <MenuContainer link = {'#'} icon = {<AccountBalanceWalletRounded />}  />
+          {/* prettier-ignore */}
+          <MenuContainer link = {'#'} icon = {<Favorite />} />
+          {/* prettier-ignore */}
+          <MenuContainer link = {'#'} icon = {<SummarizeRounded />}  />
+          {/* prettier-ignore */}
+          <MenuContainer link = {'#'} icon = {<Settings />}  />
           <div className="indicator"></div>
         </ul>
       </div>
-
-      {/* main container */}
       <main>
-        <div className="mainContainer"></div>
-        {/* Banner  */}
-        <div className="banner">
-          <BannerName name={"Claudia"} discount={"20"} more={"#"} />
-          <img src={banner} alt="banner" className="deliveryPic" />
-        </div>
-        {/* dishContainer  */}
-        <div className="dishContainer">
-          <div className="menuCard">
-            <SubMenuContainer name={"Menu Category"} />
+        <div className="mainContainer">
+          {/* Banner  */}
+          <div className="banner">
+            <BannerName name={"Jeremy"} discount={"20"} more={"#"} />
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fdelivery.png?alt=media&token=69b9823d-96df-452a-bd4e-14d27a4cc337"
+              alt=""
+              className="deliveryPic"
+            />
           </div>
-          <div className="rowContainer">
-            {MenuItems &&
-              MenuItems.map((data) => (
-                <div key={data.id} onClick={() => setData(data.itemId)}>
-                  <MenuCard
+
+          <div className="dishContainer">
+            <div className="menuCard">
+              <SubMenuContainer />
+            </div>
+
+            <div className="rowContainer">
+              {MenuItems &&
+                MenuItems.map((data) => (
+                  <div key={data.id} onClick={() => setData(data.itemId)}>
+                    <MenuCard
+                      imgSrc={data.imgSrc}
+                      name={data.name}
+                      isActive={data.id == "1" ? true : false}
+                    />
+                  </div>
+                ))}
+            </div>
+
+            <div className="dishItemContainer">
+              {isMainData &&
+                isMainData.map((data) => (
+                  <ItemCard
+                    key={data.id}
+                    itemId={data.id}
                     imgSrc={data.imgSrc}
                     name={data.name}
-                    isActive={data.id === 1 ? true : false}
+                    ratings={data.ratings}
+                    price={data.price}
                   />
-                </div>
-              ))}
-          </div>
-          <div className="dishItemContainer">
-            {isMainData &&
-              isMainData.map((data) => (
-                <ItemCard
-                  key={data.id}
-                  itemId={data.id}
-                  imgSrc={data.imgSrc}
-                  name={data.name}
-                  ratings={data.ratings}
-                  price={data.price}
-                />
-              ))}
+                ))}
+            </div>
           </div>
         </div>
         <div className="rightMenu">
@@ -118,6 +129,7 @@ function App() {
               <DebitCard />
             </div>
           </div>
+
           {!cart ? (
             <div className="addSomeItem">
               <img
@@ -128,8 +140,9 @@ function App() {
             </div>
           ) : (
             <div className="cartCheckOutContianer">
-              <SubMenuContainer name={"Votre panier"} />
               <div className="cartContainer">
+                <SubMenuContainer />
+
                 <div className="cartItems">
                   {cart &&
                     cart.map((data) => (
@@ -138,6 +151,7 @@ function App() {
                         itemId={data.id}
                         name={data.name}
                         imgSrc={data.imgSrc}
+                        qty={"4"}
                         price={data.price}
                       />
                     ))}
