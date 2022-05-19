@@ -16,6 +16,8 @@ import SubMenuContainer from "./Components/SubMenuContainer";
 import MenuCard from "./Components/MenuCard";
 import { MenuItems, Items } from "./Components/Data";
 import ItemCard from "./Components/ItemCard";
+import DebitCard from "./Components/DebitCard";
+import CartItem from "./Components/CartItem";
 
 function App() {
   // contient le tableau des plats en fontion de la categorie
@@ -106,6 +108,36 @@ function App() {
                   price={data.price}
                 />
               ))}
+          </div>
+        </div>
+        <div className="rightMenu">
+          <div className="debitCardContainer">
+            <div className="debitCard">
+              <DebitCard />
+            </div>
+          </div>
+
+          <div className="cartCheckOutContianer">
+            <div className="cartContainer">
+              <SubMenuContainer name={"Votre panier"} />
+
+              <div className="cartItems">
+                <CartItem
+                  itemId={"1"}
+                  name={"Burger"}
+                  imgSrc={""}
+                  qty={"4"}
+                  price={"7.95"}
+                />
+              </div>
+            </div>
+            <div className="totalSection">
+              <h3>Total</h3>
+              <p>
+                <span>$ 45.0</span> {}
+              </p>
+            </div>
+            <button className="checkOut">Valider</button>
           </div>
         </div>
       </main>

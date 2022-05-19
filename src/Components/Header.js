@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BarChart,
   SearchRounded,
@@ -8,6 +8,13 @@ import logo from "../img/logo.png";
 import profil from "../img/photo.jpg";
 
 function Header() {
+  useEffect(() => {
+    const toggleIcon = document.querySelector(".toggleMenu");
+    toggleIcon.addEventListener("click", () => {
+      document.querySelector(".rightMenu").classList.toggle("active");
+    });
+  }, []);
+
   return (
     <header>
       <img src={logo} alt="logo" className="logo" />
