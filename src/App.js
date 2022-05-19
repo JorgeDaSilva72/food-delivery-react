@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import MenuContainer from "./Components/MenuContainer";
 import {
@@ -15,8 +15,13 @@ import banner from "./img/banner.png";
 import SubMenuContainer from "./Components/SubMenuContainer";
 import MenuCard from "./Components/MenuCard";
 import { MenuItems, Items } from "./Components/Data";
+import ItemCard from "./Components/ItemCard";
 
 function App() {
+  const [isMainData, setMainData] = useState(
+    Items.filter((element) => element.itemId === "buger01")
+  );
+
   useEffect(() => {
     const menuLi = document.querySelectorAll("#menu li");
     console.log(menuLi);
@@ -81,6 +86,19 @@ function App() {
                     isActive={data.id === 1 ? true : false}
                   />
                 </div>
+              ))}
+          </div>
+          <div className="dishItemContainer">
+            {isMainData &&
+              isMainData.map((data) => (
+                <ItemCard
+                  key={data.id}
+                  itemId={data.id}
+                  imgSrc={data.imgSrc}
+                  name={data.name}
+                  ratings={data.ratings}
+                  price={data.price}
+                />
               ))}
           </div>
         </div>
