@@ -35,7 +35,8 @@ function CartItem({ itemId, name, imgSrc, price }) {
   return (
     <div className="cartItem" id={itemId}>
       <div className="imgBox">
-        <img src={imgSrc} alt="" />
+        {/* <img src={imgSrc} alt="" /> */}
+        <img src={require("../img/".concat(imgSrc))} alt="" />
       </div>
       <div className="itemSection">
         <h2 className="itemName">{name}</h2>

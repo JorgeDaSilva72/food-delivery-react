@@ -36,7 +36,12 @@ function ItemCard({ itemId, imgSrc, name, price, ratings }) {
       </div>
 
       <div className="imgBox">
-        <img src={imgSrc} alt="" className="itemImg" />
+        {/* <img src={imgSrc} alt="" className="itemImg" /> */}
+        <img
+          src={require("../img/".concat(imgSrc))}
+          alt=""
+          className="itemImg"
+        />
       </div>
 
       <div className="itemContent">

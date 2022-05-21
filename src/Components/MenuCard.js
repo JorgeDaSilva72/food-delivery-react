@@ -2,8 +2,6 @@ import { ChevronRightRounded } from "@mui/icons-material";
 import React from "react";
 
 function MenuCard({ imgSrc, name, isActive }) {
-  const chemin = "../img/".concat(imgSrc);
-  console.log(chemin);
   return (
     <div className={`rowMenuCard ${isActive ? `active` : ``}`}>
       <div className="imgBox">
