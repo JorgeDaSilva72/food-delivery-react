@@ -1,15 +1,16 @@
 import React from "react";
 
 function BannerName({ name, discount, more }) {
-  const currency = "$";
+  const currency = "€";
   return (
     <div className="bannerContent">
-      <h3>Hello {name},</h3>
+      <h3>Bonjour {name},</h3>
       <p>
-        Get free discount for every <span>{`${currency}${discount}`}</span>{" "}
-        purchase
+        Obtenez une promotion de 20% tous les{" "}
+        <span>{`${currency}${discount}`}</span>
+        <br></br>Passez commande
       </p>
-      <a href={more}>Learn More</a>
+      <a href={more}>En savoir plus</a>
     </div>
   );
 }

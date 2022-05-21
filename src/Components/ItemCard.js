@@ -12,10 +12,6 @@ function ItemCard({ itemId, imgSrc, name, price, ratings }) {
   const [{}, dispatch] = useStateValue();
   const [isCart, setCart] = useState(null);
 
-  const handleClick = (value) => {
-    setCurrentValue(value);
-  };
-
   useEffect(() => {
     if (isCart) {
       cartData.push(isCart);
@@ -25,6 +21,10 @@ function ItemCard({ itemId, imgSrc, name, price, ratings }) {
       });
     }
   }, [isCart]);
+
+  const handleClick = (value) => {
+    setCurrentValue(value);
+  };
 
   return (
     <div className="itemCard" id={itemId}>
@@ -38,6 +38,7 @@ function ItemCard({ itemId, imgSrc, name, price, ratings }) {
       <div className="imgBox">
         <img src={imgSrc} alt="" className="itemImg" />
       </div>
+
       <div className="itemContent">
         <h3 className="itemName">{name}</h3>
         <div className="bottom">
@@ -52,7 +53,7 @@ function ItemCard({ itemId, imgSrc, name, price, ratings }) {
               </i>
             ))}
             <h3 className="price">
-              <span>$ </span>
+              <span>€ </span>
               {price}
             </h3>
           </div>

@@ -61,7 +61,7 @@ function App() {
       <Header />
 
       {/* Left menu */}
-      <div className="bottomMenu">
+      <div className="leftMenu">
         <ul id="menu">
           {/* prettier-ignore */}
           <MenuContainer link = {'#'} icon = {<HomeRounded />}  isHome/>
@@ -82,7 +82,7 @@ function App() {
         <div className="mainContainer">
           {/* Banner  */}
           <div className="banner">
-            <BannerName name={"Jeremy"} discount={"20"} more={"#"} />
+            <BannerName name={"Jorge"} discount={"20"} more={"#"} />
             <img
               src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fdelivery.png?alt=media&token=69b9823d-96df-452a-bd4e-14d27a4cc337"
               alt=""
@@ -92,7 +92,7 @@ function App() {
 
           <div className="dishContainer">
             <div className="menuCard">
-              <SubMenuContainer />
+              <SubMenuContainer name={"Catégories"} />
             </div>
 
             <div className="rowContainer">
@@ -102,7 +102,7 @@ function App() {
                     <MenuCard
                       imgSrc={data.imgSrc}
                       name={data.name}
-                      isActive={data.id == "1" ? true : false}
+                      isActive={data.id === "1" ? true : false}
                     />
                   </div>
                 ))}
@@ -141,7 +141,7 @@ function App() {
           ) : (
             <div className="cartCheckOutContianer">
               <div className="cartContainer">
-                <SubMenuContainer />
+                <SubMenuContainer name={"Votre panier"} />
 
                 <div className="cartItems">
                   {cart &&
@@ -151,7 +151,6 @@ function App() {
                         itemId={data.id}
                         name={data.name}
                         imgSrc={data.imgSrc}
-                        qty={"4"}
                         price={data.price}
                       />
                     ))}
@@ -160,10 +159,10 @@ function App() {
               <div className="totalSection">
                 <h3>Total</h3>
                 <p>
-                  <span>$ </span> {total}
+                  <span>€ </span> {total}
                 </p>
               </div>
-              <button className="checkOut">Check Out</button>
+              <button className="checkOut">Confirmez</button>
             </div>
           )}
         </div>

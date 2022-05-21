@@ -3,10 +3,10 @@ import React from "react";
 
 function SubMenuContainer({ name }) {
   return (
-    <div className="subMenuContainer">
+    <div className="subMenuContianer">
       <h3>{name}</h3>
       <div className="viewAll">
-        <p>View All</p>
+        <p>Voir tout</p>
         <i>
           <ChevronRightRounded />
         </i>

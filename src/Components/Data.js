@@ -41,6 +41,13 @@ const MenuItems = [
     imgSrc:
       "https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fdrink1.png?alt=media&token=e9cc5e4e-2194-4766-9d5a-5e01657927b7",
   },
+  // {
+  //   id: 7,
+  //   itemId: "loukoum",
+  //   name: "Loukoum",
+  //   imgSrc:
+  //     "https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fdrink1.png?alt=media&token=e9cc5e4e-2194-4766-9d5a-5e01657927b7",
+  // },
 ];
 
 const Items = [

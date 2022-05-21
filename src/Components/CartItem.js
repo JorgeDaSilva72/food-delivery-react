@@ -15,11 +15,11 @@ function CartItem({ itemId, name, imgSrc, price }) {
   }, [qty]);
 
   const updateQty = (action, id) => {
-    if (action === "add") {
+    if (action == "add") {
       setQty(qty + 1);
     } else {
       // initial state value is one so you need to check if 1 then remove it
-      if (qty === 1) {
+      if (qty == 1) {
         cartItems.pop(id);
         dispatch({
           type: actionType.SET_CART,
@@ -27,6 +27,7 @@ function CartItem({ itemId, name, imgSrc, price }) {
         });
       } else {
         setQty(qty - 1);
+        console.log(qty);
       }
     }
   };
@@ -53,7 +54,7 @@ function CartItem({ itemId, name, imgSrc, price }) {
         </div>
       </div>
       <p className="itemPrice">
-        <span className="dolorSign">$</span>{" "}
+        <span className="dolorSign">€</span>{" "}
         <span className="itemPriceValue">{itemPrice}</span>
       </p>
     </div>
