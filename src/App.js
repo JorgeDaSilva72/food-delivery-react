@@ -84,7 +84,8 @@ function App() {
           <div className="banner">
             <BannerName name={"Jorge"} discount={"20"} more={"#"} />
             <img
-              src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fdelivery.png?alt=media&token=69b9823d-96df-452a-bd4e-14d27a4cc337"
+              // src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fdelivery.png?alt=media&token=69b9823d-96df-452a-bd4e-14d27a4cc337"
+              src={require("./img/delivery.png")}
               alt=""
               className="deliveryPic"
             />
@@ -133,7 +134,8 @@ function App() {
           {!cart || cart.length === 0 ? (
             <div className="addSomeItem">
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2FemptyCart.png?alt=media&token=50b733d4-cdd9-4025-bffe-8efa4066ca24"
+                // src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2FemptyCart.png?alt=media&token=50b733d4-cdd9-4025-bffe-8efa4066ca24"
+                src={require("./img/emptyCart.png")}
                 alt=""
                 className="emptyCart"
               />
