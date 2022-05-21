@@ -31,7 +31,7 @@ function Header() {
       />
 
       <div className="logoName">
-        <h1>Hidaya</h1>
+        <h1>Hydaya</h1>
       </div>
 
       <div className="inputBox">
