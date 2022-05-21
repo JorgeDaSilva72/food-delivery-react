@@ -55,8 +55,8 @@ function CartItem({ itemId, name, imgSrc, price }) {
         </div>
       </div>
       <p className="itemPrice">
-        <span className="dolorSign">€</span>{" "}
-        <span className="itemPriceValue">{itemPrice}</span>
+        <span className="itemPriceValue">{itemPrice}</span>{" "}
+        <span className="dolorSign">€</span>
       </p>
     </div>
   );
